@@ -249,7 +249,7 @@ exports.createCookies = (req, res) => {
     .then(
       sessionCookie => {
         // Set cookie policy for session cookie.
-        const options = { maxAge: expiresIn, httpOnly: true, signed: true }
+        const options = { maxAge: expiresIn, httpOnly: true, signed: true, sameSite: "None", secure: true }
         res.cookie("token", sessionCookie, options)
 
         return res.json(user)
